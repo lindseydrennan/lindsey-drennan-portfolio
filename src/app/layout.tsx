@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter, Libre_Baskerville, Plus_Jakarta_Sans, Work_Sans } from "next/font/google";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import "./globals.css";
@@ -84,6 +85,7 @@ export default function RootLayout({
         <Navbar />
         <main id="main" className="flex-1">{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
