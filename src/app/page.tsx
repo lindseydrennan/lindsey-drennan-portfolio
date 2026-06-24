@@ -9,10 +9,13 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="mx-auto flex w-full max-w-[1280px] items-center px-12 pt-[250px] pb-[70px] max-sm:flex-col max-sm:items-center max-sm:px-0 max-sm:pt-[200px]">
+    <section className="mx-auto flex w-full max-w-[1280px] items-center px-12 pt-[250px] pb-[70px] max-sm:flex-col max-sm:items-center max-sm:px-6 max-sm:pt-10">
+      {/* Headshot — mobile: top, desktop: absolute overlay */}
+      <Headshot className="mb-6 hidden max-w-[280px] self-center max-sm:block" delay={300} />
+
       <div className="relative flex w-full flex-col items-start gap-5 max-sm:items-center">
         <FadeIn>
-          <h1 className="max-w-[850px]">
+          <h1 className="max-w-[850px] max-sm:text-center">
             I&apos;m a brand designer, web designer, front-end developer and
             photographer. Passionate about brand standards and design systems.
           </h1>
@@ -27,7 +30,8 @@ export default function Home() {
           </Link>
         </FadeIn>
 
-        <Headshot className="absolute -top-[200px] left-[757px] z-0 max-w-[600px] max-md:static max-md:mt-8 max-md:self-center" />
+        {/* Desktop only — absolute positioned */}
+        <Headshot className="absolute -top-[200px] left-[757px] z-0 max-w-[600px] max-sm:hidden" />
       </div>
     </section>
   );

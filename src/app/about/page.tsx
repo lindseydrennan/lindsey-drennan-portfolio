@@ -16,8 +16,8 @@ const traits = [
 
 export default function About() {
   return (
-    <section className="mx-auto flex w-full max-w-7xl flex-col items-center px-12 pt-24 pb-20 max-sm:px-6 max-sm:pt-12">
-      <Headshot className="relative top-8 max-sm:top-16 max-sm:max-w-xs" />
+    <section className="mx-auto flex w-full max-w-7xl flex-col items-center overflow-hidden px-12 pt-24 pb-20 max-sm:px-6 max-sm:pt-8">
+      <Headshot className="relative top-6 max-w-sm max-sm:top-4 max-sm:max-w-[200px]" />
 
       {/* Trait table */}
       <div className="flex w-full max-w-lg flex-col rounded border border-[#cdd9c5]">

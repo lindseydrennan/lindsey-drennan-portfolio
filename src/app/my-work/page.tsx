@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 function SkillGrid({ skills }: { skills: string[] }) {
   return (
-    <div className="grid w-full grid-cols-4 gap-5 max-sm:grid-cols-2">
+    <div className="flex w-full flex-wrap gap-3">
       {skills.map((s) => (
         <div
           key={s}
-          className="flex items-center justify-center rounded text-base leading-5"
+          className="rounded-lg border border-borders px-4 py-2 text-sm leading-5"
         >
           {s}
         </div>
@@ -103,7 +103,7 @@ function CaseImage({
         quality={95}
         loading="eager"
         sizes="(max-width: 1280px) 100vw, 1152px"
-        className="w-full rounded-3xl"
+        className="w-full"
       />
     </FadeIn>
   );
@@ -126,7 +126,7 @@ function FullWidthImage({
         quality={95}
         loading="eager"
         sizes="(max-width: 1280px) 100vw, 1280px"
-        className="w-full rounded-3xl"
+        className="w-full"
       />
     </FadeIn>
   );

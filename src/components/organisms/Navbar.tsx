@@ -21,21 +21,69 @@ function GitHubIcon() {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  children,
+  onClick,
+  className = "",
+}: {
+  href: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+}) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
   return (
     <Link
       href={href}
-      className="group relative px-5 py-5 font-jakarta text-sm font-semibold tracking-wide text-dark-green"
+      onClick={onClick}
+      className={`group relative font-jakarta text-sm font-semibold tracking-wide text-dark-green ${className}`}
     >
       {children}
       <span
-        className={`absolute bottom-3 left-5 right-5 h-[2px] bg-peach transition-transform duration-300 ease-out origin-left ${
+        className={`absolute -bottom-1 left-0 right-0 h-[2px] bg-peach transition-transform duration-300 ease-out origin-left ${
           isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
         }`}
       />
+    </Link>
+  );
+}
+
+function MobileMenuLink({
+  href,
+  children,
+  onClick,
+  index,
+  isOpen,
+}: {
+  href: string;
+  children: React.ReactNode;
+  onClick: () => void;
+  index: number;
+  isOpen: boolean;
+}) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="group relative overflow-hidden"
+      style={{
+        opacity: isOpen ? 1 : 0,
+        transform: isOpen ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.4s cubic-bezier(0.22,1,0.36,1) ${index * 80 + 100}ms, transform 0.4s cubic-bezier(0.22,1,0.36,1) ${index * 80 + 100}ms`,
+      }}
+    >
+      <span className="font-jakarta text-4xl font-semibold text-dark-green">
+        {children}
+      </span>
+      {isActive && (
+        <span className="ml-3 inline-block h-2 w-2 rounded-full bg-peach" />
+      )}
     </Link>
   );
 }
@@ -51,8 +99,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const iconLinkClass =
-    "btn-base border border-borders bg-bg text-dark-green fill-dark-green hover:bg-dark-green hover:text-white hover:fill-white hover:border-dark-green rounded-xl px-[15px] py-[10px]";
+    "btn-base border border-borders bg-cream text-dark-green fill-dark-green hover:bg-dark-green hover:text-white hover:fill-white hover:border-dark-green rounded-xl px-[15px] py-[10px]";
 
   return (
     <nav
@@ -60,15 +113,25 @@ export default function Navbar() {
       className="sticky top-0 z-50 flex w-full justify-center bg-cream"
       style={{ viewTransitionName: "site-header" }}
     >
-      <div className={`flex w-full max-w-[1280px] items-center justify-between px-6 transition-all duration-300 ${scrolled ? "py-3" : "py-6"}`}>
-        <Link href="/" aria-label="Home">
-          <LottieLogo className={`transition-all duration-300 max-sm:w-[70px] ${scrolled ? "w-[75px] max-md:w-[60px]" : "w-[150px] max-md:w-[120px]"}`} />
+      <div
+        className={`flex w-full max-w-[1280px] items-center justify-between transition-all duration-300 ${
+          scrolled ? "px-6 py-3 max-sm:px-6" : "px-12 py-6 max-sm:px-6"
+        }`}
+      >
+        <Link href="/" aria-label="Home" onClick={() => setMenuOpen(false)}>
+          <LottieLogo
+            className={`transition-all duration-300 ${
+              scrolled
+                ? "w-[75px] max-md:w-[60px] max-sm:w-[50px]"
+                : "w-[150px] max-md:w-[120px] max-sm:w-[70px]"
+            }`}
+          />
         </Link>
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-0 md:flex">
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/my-work">My Work</NavLink>
+          <NavLink href="/about" className="px-5 py-5">About</NavLink>
+          <NavLink href="/my-work" className="px-5 py-5">My Work</NavLink>
           <div className="ml-2 flex items-center gap-5">
             <Link
               href="https://www.linkedin.com/in/lindsey-drennan-183b63b3/"
@@ -93,50 +156,76 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="text-dark-green md:hidden"
+          className="relative z-50 h-8 w-8 text-dark-green md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          <span
+            className={`absolute left-0 block h-[2px] w-8 bg-current transition-all duration-300 ${
+              menuOpen ? "top-[15px] rotate-45" : "top-[8px]"
+            }`}
+          />
+          <span
+            className={`absolute left-0 top-[15px] block h-[2px] w-8 bg-current transition-all duration-300 ${
+              menuOpen ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`absolute left-0 block h-[2px] w-8 bg-current transition-all duration-300 ${
+              menuOpen ? "top-[15px] -rotate-45" : "top-[22px]"
+            }`}
+          />
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="absolute top-full left-0 w-full bg-light-green p-6 md:hidden">
-          <div className="flex flex-col items-center gap-4">
-            <NavLink href="/about">About</NavLink>
-            <NavLink href="/my-work">My Work</NavLink>
-            <div className="flex gap-5 pt-2">
-              <Link
-                href="https://www.linkedin.com/in/lindsey-drennan-183b63b3/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={iconLinkClass}
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon />
-              </Link>
-              <Link
-                href="https://github.com/lindseydrennan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={iconLinkClass}
-                aria-label="GitHub"
-              >
-                <GitHubIcon />
-              </Link>
-            </div>
+      {/* Mobile menu — full screen overlay */}
+      <div
+        className={`fixed inset-0 top-0 z-40 flex flex-col bg-cream transition-all duration-500 md:hidden ${
+          menuOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+      >
+        <div className="flex flex-1 flex-col justify-center gap-8 px-10 pb-20">
+          <MobileMenuLink href="/about" onClick={() => setMenuOpen(false)} index={0} isOpen={menuOpen}>
+            About
+          </MobileMenuLink>
+          <MobileMenuLink href="/my-work" onClick={() => setMenuOpen(false)} index={1} isOpen={menuOpen}>
+            My Work
+          </MobileMenuLink>
+
+          <div
+            className="flex gap-5 pt-4"
+            style={{
+              opacity: menuOpen ? 1 : 0,
+              transform: menuOpen ? "translateY(0)" : "translateY(20px)",
+              transition: "opacity 0.4s cubic-bezier(0.22,1,0.36,1) 300ms, transform 0.4s cubic-bezier(0.22,1,0.36,1) 300ms",
+            }}
+          >
+            <Link
+              href="https://www.linkedin.com/in/lindsey-drennan-183b63b3/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={iconLinkClass}
+              aria-label="LinkedIn"
+              onClick={() => setMenuOpen(false)}
+            >
+              <LinkedInIcon />
+            </Link>
+            <Link
+              href="https://github.com/lindseydrennan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={iconLinkClass}
+              aria-label="GitHub"
+              onClick={() => setMenuOpen(false)}
+            >
+              <GitHubIcon />
+            </Link>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
