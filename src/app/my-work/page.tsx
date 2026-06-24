@@ -34,7 +34,7 @@ function SectionHeader({
   years: string;
 }) {
   return (
-    <div className="flex w-full flex-wrap items-center justify-between gap-2">
+    <div className="flex w-full flex-wrap items-center justify-between gap-2 max-sm:flex-col max-sm:items-start max-sm:gap-1">
       <div className="flex flex-wrap items-center gap-2.5">
         <span className="font-jakarta text-sm font-semibold uppercase tracking-[0.1em] text-copy">
           {role}
@@ -46,7 +46,7 @@ function SectionHeader({
           {location}
         </span>
       </div>
-      <span className="min-w-[100px] text-right font-jakarta text-sm font-semibold uppercase tracking-[0.1em] text-copy">
+      <span className="font-jakarta text-sm font-semibold uppercase tracking-[0.1em] text-copy max-sm:text-left">
         {years}
       </span>
     </div>
@@ -134,7 +134,7 @@ function FullWidthImage({
 
 export default function MyWork() {
   return (
-    <div className="mx-auto flex max-w-[1280px] my-24 flex-col gap-10 px-0 max-sm:mx-6">
+    <div className="mx-auto flex max-w-[1280px] my-24 flex-col gap-10 px-12 max-sm:px-6">
       {/* === FLEETIO === */}
       <section className="mt-16 flex flex-col gap-10">
         <div className="flex flex-col gap-7">

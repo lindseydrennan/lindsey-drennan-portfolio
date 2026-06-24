@@ -43,7 +43,7 @@ function NavLink({
     >
       {children}
       <span
-        className={`absolute -bottom-1 left-0 right-0 h-[2px] bg-peach transition-transform duration-300 ease-out origin-left ${
+        className={`absolute bottom-3 left-5 right-5 h-[2px] bg-peach transition-transform duration-300 ease-out origin-left ${
           isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
         }`}
       />
