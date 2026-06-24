@@ -11,14 +11,14 @@ export default function Footer() {
           <Image
             src="/images/lindsey-logo.svg"
             alt="Lindsey Drennan logo"
-            width={91}
+            width={50}
             height={106}
           />
           <div className="flex w-full max-w-[302px] gap-6">
             <div className="flex flex-col gap-4">
-              <h3 className="text-dark-green">
+              <h4 className="text-dark-green">
                 Links
-              </h3>
+              </h4>
               <Link href="/about" className={footerLink}>
                 About
               </Link>
@@ -29,9 +29,9 @@ export default function Footer() {
           </div>
           <div className="flex w-full gap-6">
             <div className="flex flex-col gap-4">
-              <h3 className="text-dark-green">
+              <h4 className="text-dark-green">
                 Get in touch
-              </h3>
+              </h4>
               <Link
                 href="https://dribbble.com/lindseydrennan"
                 target="_blank"
