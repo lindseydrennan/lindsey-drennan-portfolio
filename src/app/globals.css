@@ -57,7 +57,7 @@ h2 {
 
 h3 {
   font-family: var(--font-plus-jakarta-sans);
-  font-size: clamp(18px, 1.5vw + 10px, 22px);
+  font-size: clamp(18px, 1.5vw + 10px, 32px);
   font-weight: 700;
   line-height: 140%;
   letter-spacing: -0.015em;
