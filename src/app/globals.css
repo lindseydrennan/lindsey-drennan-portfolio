@@ -4,10 +4,10 @@
   --bg: #fbfbf6;
   --cream: #fffef8;
   --dark-green: #3a4e48;
-  --green: #6a7b76;
+  --green: #576862;
   --light-green: #cdd9c5;
   --peach: #bc7f6a;
-  --copy: #6d6966;
+  --copy: #5c5854;
   --headlines: #3a3836;
   --borders: #e1dbd4;
   --image-bg: #f1f0eb;
@@ -201,6 +201,27 @@ p {
   color: var(--peach);
 }
 
-.footer-link:hover::after {
+.footer-link:hover::after,
+.footer-link:focus-visible::after {
   transform: scaleX(1);
+}
+
+.footer-link:focus-visible {
+  color: var(--peach);
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--dark-green);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

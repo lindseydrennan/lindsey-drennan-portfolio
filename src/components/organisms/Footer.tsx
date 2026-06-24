@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="flex flex-col gap-3.5">
         <div className="flex w-full items-start gap-12 max-md:flex-col max-md:items-start max-md:gap-5">
           <Image
-            src="https://cdn.prod.website-files.com/674b6532c29e9c0c254fa406/69fe62bbc1734fecd4753ce9_lindsey-logo.png"
+            src="/images/lindsey-logo.svg"
             alt="Lindsey Drennan logo"
             width={91}
             height={106}

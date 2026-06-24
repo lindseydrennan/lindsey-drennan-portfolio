@@ -41,6 +41,22 @@ export const metadata: Metadata = {
   },
   description:
     "I'm a brand designer, web designer, front-end developer and photographer. Passionate about brand standards and design systems.",
+  metadataBase: new URL("https://www.lindseyadrennan.com"),
+  openGraph: {
+    title: "Lindsey Drennan - Brand & Web Designer",
+    description:
+      "Brand designer, front-end developer, and photographer. Passionate about brand standards and design systems.",
+    url: "https://www.lindseyadrennan.com",
+    siteName: "Lindsey Drennan",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lindsey Drennan - Brand & Web Designer",
+    description:
+      "Brand designer, front-end developer, and photographer. Passionate about brand standards and design systems.",
+  },
   icons: {
     icon: "https://cdn.prod.website-files.com/674b6532c29e9c0c254fa406/674b9b90f668f9d0ac136a65_favicon-lindsey.png",
     apple:
@@ -59,8 +75,14 @@ export default function RootLayout({
       className={`${inter.variable} ${ibmPlexMono.variable} ${baskerville.variable} ${jakarta.variable} ${workSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-dark-green focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

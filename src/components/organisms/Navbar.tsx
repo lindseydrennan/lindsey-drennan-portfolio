@@ -7,7 +7,7 @@ import LottieLogo from "../atoms/LottieLogo";
 
 function LinkedInIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M5.37 3.26c0 1.4-1.12 2.53-2.5 2.53S.37 4.66.37 3.26C.37 1.86 1.49.74 2.87.74s2.5 1.12 2.5 2.52zM5.39 7.8H.35v16.2h5.04V7.8zm8.07 0H8.44v16.2h5.03V15.5c0-4.73 6.09-5.12 6.09 0v8.5h5.05V13.73c0-7.98-9.02-7.69-11.14-3.76V7.8z" fill="currentColor"/>
     </svg>
   );
@@ -15,7 +15,7 @@ function LinkedInIcon() {
 
 function GitHubIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M12 .3a12 12 0 00-3.79 23.4c.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3z" fill="currentColor"/>
     </svg>
   );
@@ -109,7 +109,7 @@ export default function Navbar() {
 
   return (
     <nav
-      role="banner"
+      aria-label="Main navigation"
       className="sticky top-0 z-50 flex w-full justify-center bg-cream"
       style={{ viewTransitionName: "site-header" }}
     >

@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const NAME_PATHS = [
   "M217.327 70.2683C217.081 70.4801 216.752 70.7625 216.881 71.0799C216.981 70.78 217.222 70.6446 217.327 70.2683ZM178.734 129.821C190.162 129.154 202.224 128.229 215.216 129.22C216.133 129.29 217.05 129.359 217.967 129.429C220.336 129.61 222.706 129.791 224.746 130.254C225.575 130.471 226.639 130.629 226.804 131.487C226.669 132.245 225.788 132.716 225.112 132.511C224.688 132.017 225.558 131.699 225.57 131.546C223.235 130.907 220.566 130.627 217.968 130.429C204.517 129.403 191.026 129.912 177.618 131.35C174.717 135.126 171.892 138.907 169.132 142.848C169.531 142.648 170.36 142.865 170.396 143.406C170.255 144.24 169.697 144.505 169.204 144.929C168.716 145.276 168.222 145.7 167.305 145.63C167.005 145.53 166.87 145.289 166.741 144.972C166.786 143.361 167.715 142.279 168.413 141.179C169.893 138.909 173.811 133.904 175.285 131.71C169.324 132.255 163.141 133.705 157.146 134.708C156.758 134.756 156.288 134.874 155.905 134.845C155.37 134.804 154.929 134.54 154.976 133.928C154.94 133.387 155.516 132.893 155.927 132.54C156.591 131.899 157.649 131.134 158.795 131.221C159.177 131.251 159.554 131.356 159.995 131.62C160.371 131.726 160.495 132.12 160.548 132.431C165.697 131.44 170.916 130.531 176.489 130.034C190.52 111.348 204.051 92.1631 216.458 71.5857C216.3 71.6505 215.847 71.5391 215.864 71.3098C215.64 69.2172 217.842 66.541 219.376 66.5811C220.064 66.6335 220.723 67.0681 220.759 67.6089C220.906 68.6963 219.89 68.9263 219.596 69.7495C219.091 70.3259 218.727 71.0669 218.292 71.7256C212.22 80.7944 206.207 90.0983 200.135 99.1671C193.188 109.63 186.176 119.934 178.734 129.821ZM158.05 132.933C158.214 132.791 158.526 132.738 158.832 132.762C158.591 132.897 158.361 132.879 158.05 132.933Z",
@@ -25,6 +24,7 @@ export default function Headshot({
   className?: string;
   delay?: number;
 }) {
+  const id = useId();
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -42,9 +42,11 @@ export default function Headshot({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        role="img"
+        aria-label="Headshot of Lindsey Drennan with handwritten signature"
       >
         <defs>
-          <clipPath id="headshot-circle">
+          <clipPath id={`${id}-circle`}>
             <rect
               x="19.75"
               width="193.35"
@@ -56,7 +58,7 @@ export default function Headshot({
         </defs>
 
         {/* Headshot photo in circle */}
-        <g clipPath="url(#headshot-circle)">
+        <g clipPath={`url(#${id}-circle)`}>
           <rect
             x="19.75"
             width="193.35"
@@ -79,7 +81,7 @@ export default function Headshot({
 
         {/* Handwritten name with clip-path wipe reveal */}
         <defs>
-          <clipPath id="name-reveal">
+          <clipPath id={`${id}-reveal`}>
             <rect
               x="150"
               y="60"
@@ -92,7 +94,7 @@ export default function Headshot({
           </clipPath>
         </defs>
 
-        <g clipPath="url(#name-reveal)">
+        <g clipPath={`url(#${id}-reveal)`}>
           {NAME_PATHS.map((d, i) => (
             <path key={i} d={d} fill="#BC7F6A" />
           ))}
