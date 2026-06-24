@@ -1,26 +1,217 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #fbfbf6;
+  --cream: #fffef8;
+  --dark-green: #3a4e48;
+  --green: #6a7b76;
+  --light-green: #cdd9c5;
+  --peach: #bc7f6a;
+  --copy: #6d6966;
+  --headlines: #3a3836;
+  --borders: #e1dbd4;
+  --image-bg: #f1f0eb;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: var(--bg);
+  --color-cream: var(--cream);
+  --color-dark-green: var(--dark-green);
+  --color-green: var(--green);
+  --color-light-green: var(--light-green);
+  --color-peach: var(--peach);
+  --color-copy: var(--copy);
+  --color-headlines: var(--headlines);
+  --color-borders: var(--borders);
+  --color-image-bg: var(--image-bg);
+  --font-baskerville: var(--font-libre-baskerville);
+  --font-jakarta: var(--font-plus-jakarta-sans);
+  --font-work: var(--font-work-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--copy);
+  font-family: var(--font-plus-jakarta-sans);
+}
+
+h1 {
+  font-family: var(--font-libre-baskerville);
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  color: var(--dark-green);
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--font-libre-baskerville);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -0.015em;
+  color: var(--dark-green);
+  margin: 0;
+}
+
+h3 {
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.015em;
+  color: var(--headlines);
+  margin: 0;
+}
+
+p {
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: var(--copy);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 34px;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    fill 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn {
+  border: 1px solid var(--borders);
+  background-color: var(--bg);
+  color: var(--dark-green);
+  border-radius: 12px;
+  padding: 15px 25px;
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.btn:hover {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 0.3s cubic-bezier(0.22, 1, 0.36, 1) fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.3s cubic-bezier(0.22, 1, 0.36, 1) fade-in;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.footer-link {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  width: fit-content;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--peach);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link:hover {
+  color: var(--peach);
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
 }
