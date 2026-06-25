@@ -155,9 +155,34 @@ p {
     transform: translateY(0);
   }
 
-  .btn:focus-visible {
+  .btn:focus-visible,
+  .icon-btn:focus-visible {
     outline: 2px solid var(--dark-green);
     outline-offset: 2px;
+  }
+
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borders);
+    background-color: var(--cream);
+    color: var(--dark-green);
+    fill: var(--dark-green);
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      fill 0.25s ease;
+  }
+
+  .icon-btn:hover {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+    color: #fff;
+    fill: #fff;
   }
 
   .footer-link {

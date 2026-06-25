@@ -105,13 +105,13 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const iconLinkClass =
-    "btn-base border border-borders bg-cream text-dark-green fill-dark-green hover:bg-dark-green hover:text-white hover:fill-white hover:border-dark-green rounded-xl px-[15px] py-[10px]";
+    "icon-btn rounded-xl px-[15px] py-[10px]";
 
   return (
     <nav
       aria-label="Main navigation"
-      className="sticky top-0 z-50 flex w-full justify-center bg-cream"
-      style={{ viewTransitionName: "site-header" }}
+      className="sticky top-0 z-50 flex w-full justify-center"
+      style={{ backgroundColor: "var(--cream)", viewTransitionName: "site-header" }}
     >
       <div
         className={`flex w-full max-w-[1280px] items-center justify-between transition-all duration-300 ${
@@ -181,11 +181,12 @@ export default function Navbar() {
 
       {/* Mobile menu — full screen overlay */}
       <div
-        className={`fixed inset-0 top-0 z-40 flex flex-col bg-cream transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 top-0 z-40 flex flex-col transition-all duration-500 md:hidden ${
           menuOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
+        style={{ backgroundColor: "var(--cream)" }}
       >
         <div className="flex flex-1 flex-col justify-center gap-8 px-10 pb-20">
           <MobileMenuLink href="/about" onClick={() => setMenuOpen(false)} index={0} isOpen={menuOpen}>
