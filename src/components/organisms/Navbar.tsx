@@ -39,14 +39,9 @@ function NavLink({
     <Link
       href={href}
       onClick={onClick}
-      className={`group relative font-jakarta text-sm font-semibold tracking-wide text-dark-green ${className}`}
+      className={`nav-link ${isActive ? "nav-link--active" : ""} ${className}`}
     >
       {children}
-      <span
-        className={`absolute bottom-3 left-5 right-5 h-[2px] bg-peach transition-transform duration-300 ease-out origin-left ${
-          isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-        }`}
-      />
     </Link>
   );
 }
