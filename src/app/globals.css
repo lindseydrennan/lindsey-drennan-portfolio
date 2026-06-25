@@ -13,20 +13,22 @@
   --image-bg: #f1f0eb;
 }
 
-@theme inline {
-  --color-bg: var(--bg);
-  --color-cream: var(--cream);
-  --color-dark-green: var(--dark-green);
-  --color-green: var(--green);
-  --color-light-green: var(--light-green);
-  --color-peach: var(--peach);
-  --color-copy: var(--copy);
-  --color-headlines: var(--headlines);
-  --color-borders: var(--borders);
-  --color-image-bg: var(--image-bg);
-  --font-baskerville: var(--font-libre-baskerville);
-  --font-jakarta: var(--font-plus-jakarta-sans);
-  --font-work: var(--font-work-sans);
+@layer theme {
+  :root {
+    --color-bg: var(--bg);
+    --color-cream: var(--cream);
+    --color-dark-green: var(--dark-green);
+    --color-green: var(--green);
+    --color-light-green: var(--light-green);
+    --color-peach: var(--peach);
+    --color-copy: var(--copy);
+    --color-headlines: var(--headlines);
+    --color-borders: var(--borders);
+    --color-image-bg: var(--image-bg);
+    --font-baskerville: var(--font-libre-baskerville);
+    --font-jakarta: var(--font-plus-jakarta-sans);
+    --font-work: var(--font-work-sans);
+  }
 }
 
 body {
