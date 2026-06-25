@@ -55,14 +55,14 @@ export default function About() {
 
       {/* Resume */}
       <FadeIn delay={400}>
-      <Link
+      <a
         href="/lindsey-drennan-resume.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="btn btn-base mt-6"
       >
         Download Resume
-      </Link>
+      </a>
       </FadeIn>
     </section>
   );
