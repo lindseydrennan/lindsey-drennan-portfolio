@@ -123,12 +123,12 @@ export default function ComponentShowcase() {
     <div className="flex w-full flex-col gap-6">
       <div className="grid w-full grid-cols-2 gap-6 max-md:grid-cols-1">
         {/* Live preview */}
-        <div className="flex flex-col gap-4 rounded-2xl border border-borders bg-cream p-8">
+        <div className="flex flex-col gap-4 rounded-2xl p-8 max-sm:p-4" style={{ border: "1px solid var(--borders)", backgroundColor: "var(--cream)" }}>
           <span className="text-xs font-semibold uppercase tracking-[0.1em] text-green">
             Live component
           </span>
 
-          <div className="flex flex-1 flex-col justify-center gap-4 rounded-xl bg-[#F1F0EB] p-6">
+          <div className="flex flex-1 flex-col justify-center gap-4 rounded-xl bg-[#F1F0EB] p-6 max-sm:p-3">
             <TextCTA
               eyebrow="Upcoming Webinar"
               title="Fleetio Live Demo"
@@ -140,7 +140,7 @@ export default function ComponentShowcase() {
         </div>
 
         {/* Code panel */}
-        <div className="flex flex-col gap-4 rounded-2xl border border-borders bg-[#14352E] p-8">
+        <div className="flex flex-col gap-4 rounded-2xl bg-[#14352E] p-8 max-sm:p-4" style={{ border: "1px solid var(--borders)" }}>
           <span
             className="text-xs font-semibold uppercase tracking-[0.1em]"
             style={{ fontFamily: "var(--font-inter), sans-serif", color: "#6B917E" }}
@@ -148,7 +148,7 @@ export default function ComponentShowcase() {
             React implementation
           </span>
           <pre
-            className="flex-1 overflow-x-auto rounded-xl bg-[#0D2923] p-6 text-[13px] leading-relaxed"
+            className="flex-1 overflow-x-auto rounded-xl bg-[#0D2923] p-6 max-sm:p-3 text-[13px] max-sm:text-[11px] leading-relaxed"
             style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", color: "#B8C9C0" }}
           >
             <code>{CODE}</code>
