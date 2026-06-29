@@ -43,7 +43,7 @@ function TextCTA({
           }}
           aria-hidden="true"
         />
-        <div className="relative z-10 flex items-center justify-between gap-8">
+        <div className="relative z-10 flex items-center justify-between gap-8 max-sm:flex-col max-sm:items-start max-sm:gap-4">
           <div>
             <p
               className="mb-1.5 !text-[12px] font-bold uppercase tracking-[0.08em]"
