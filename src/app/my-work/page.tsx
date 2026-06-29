@@ -15,7 +15,8 @@ function SkillGrid({ skills }: { skills: string[] }) {
       {skills.map((s) => (
         <div
           key={s}
-          className="rounded-lg border border-borders px-4 py-2 text-sm leading-5"
+          className="rounded-lg px-4 py-2 text-sm leading-5"
+          style={{ border: "1px solid var(--borders)" }}
         >
           {s}
         </div>
