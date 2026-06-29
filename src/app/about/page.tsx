@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Headshot from "@/components/atoms/Headshot";
 import FadeIn from "@/components/atoms/FadeIn";
 

@@ -41,7 +41,7 @@ function SectionHeader({
           {role}
         </span>
         <span className="font-jakarta text-sm font-semibold uppercase tracking-[0.1em] text-peach">
-          //
+          {"//"}
         </span>
         <span className="font-jakarta text-sm font-semibold uppercase tracking-[0.1em] text-copy">
           {location}
@@ -188,6 +188,10 @@ export default function MyWork() {
         <CaseImage
           src="/images/fleetio-design-system.png"
           alt="Typography scale with headings and body text sizes, examples of button styles, shadow effect samples, color palettes, icon sizes, and a partial vehicle management software screen."
+        />
+          <FullWidthImage
+          src="/images/swag-examples.png"
+          alt="Showing examples of Fleetio branded swag"
         />
 
         <ContentBlock
