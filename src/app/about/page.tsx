@@ -56,6 +56,7 @@ export default function About() {
       <FadeIn delay={400}>
       <a
         href="/lindsey-drennan-resume.pdf"
+        download
         target="_blank"
         rel="noopener noreferrer"
         className="btn btn-base mt-6"
